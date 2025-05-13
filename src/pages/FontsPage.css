@@ -1,0 +1,49 @@
+/* Define font families in CSS */
+.celtic-garamond {
+  font-family: 'Celtic Garamond the 2nd';
+}
+
+.elementary-gothic {
+  font-family: 'Elementary Gothic Bookhand';
+}
+
+.longa-iberica {
+  font-family: 'Longa Iberica';
+}
+
+.morris-roman {
+  font-family: 'MorrisRoman-Black';
+}
+
+.old-newspaper-types {
+  font-family: 'OldNewspaperTypes';
+}
+
+/* Font Group Styling */
+.font-group {
+  margin-bottom: 2rem;
+}
+
+/* Additional styling for different elements */
+.font-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.font-heading {
+  font-size: 1.5rem;
+}
+
+.font-normal {
+  font-size: 1rem;
+}
+
+.font-sample {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  margin-top: 1rem;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+}
