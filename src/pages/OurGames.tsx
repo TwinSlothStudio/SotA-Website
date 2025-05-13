@@ -1,4 +1,3 @@
-import React from 'react';
 import Title from '../components/Title'; // adjust path if needed
 import gameImage from '../assets/gameImages/shadow.png'; // replace with your actual image file and path
 import './OurGames.css'; // if you want to style it further
