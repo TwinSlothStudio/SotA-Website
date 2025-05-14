@@ -50,8 +50,7 @@ const OurGames = () => {
               <img src={gameImage} alt="Shadow of the Ascendant" className="side-panel-image" />
               <h2 className="side-panel-title">Shadow of the Ascendant</h2>
             </div>
-
-            <p>
+            <p className="sidepanelP">
               An open-world rogue-like with realistic graphics, quality gameplay, and endless exploration potential. Don't wait—except do, because this game is still in development <em>(and will be for a long time)</em>.
             </p>
             <div className="store-buttons">

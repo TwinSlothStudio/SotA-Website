@@ -1,5 +1,397 @@
-.page-content {
+@font-face {
+  font-family: 'Elementary Gothic Bookhand';
+  src: url('../assets/fonts/ElementaryGothicBookhand.ttf') format('truetype');
+}
+
+#zoom-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out, opacity 1s ease-in-out; /* Add fade effect */
+  opacity: 1; /* Ensures the background starts fully visible */
+}
+
+/* Scale the image differently on mobile */
+@media screen and (max-width: 768px) {
+  #zoom-bg {
+    transform: scale(4); /* More zoomed in on narrow screens */
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-size: 150% auto;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.page-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.hero-section {
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 0;
+}
+
+/* Title container with parallax effect */
+.hero-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0;
+  position: relative;
+  z-index: 1; /* ABOVE background */
+  pointer-events: none; /* So it doesn’t block interactions */
+  will-change: transform, opacity;
+  margin-top: -300px;
+}
+
+.hero-title {
+  font-family: 'Elementary Gothic Bookhand';
+  color: #ebb21f;
+  font-size: 4rem;
+  font-weight: bold;
   text-align: center;
+  background: transparent;
+  mix-blend-mode: normal;
+  transition: opacity 0.1s ease; /* Fade effect */
+}
+
+
+/* Content area will scroll over the title */
+.content-section {
+  background-color: #ead6a2;
+  width: 100%;
+  min-height: 10vh;
+  padding-top: 8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+  position: relative;
+  z-index: 2; /* ABOVE title */
+  margin-top: 300px;
+}
+
+.content-section p {
+  font-size: 1.25rem;
+  color: #100011;
+  max-width: 800px;
+  margin: 2rem auto 0;
+}
+
+.briefAbout {
+  width: 100vw;
+  background-color: #ead6a2;
+  padding: 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.briefAbout .title-text {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #100011;
+  text-align: center;
+}
+
+.briefAbout p {
+  max-width: 800px;
+  text-align: center;
+  color: #100011;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 auto 2rem;
+}
+
+.personBox-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.teamPhotos {
+  background-color: #ead6a2;
+}
+
+.title-text {
+  margin-bottom: 0.5rem; /* Adds space below "Our Games" heading */
+}
+
+.briefAbout {
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.personBox {
+  flex: 1 1 300px; /* Grow/shrink with min width */
+  max-width: 400px;
+}
+
+.personBox {
+  cursor: pointer;
+  background-color: #100011; 
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.personBox:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.personBox p {
+  background-color: #100011;
+  color: #eac76b;
+}
+
+.personImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.personTitle {
+  color: #facc15; /* yellow */
   font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.personSubtitle {
+  color: #94a3b8; /* muted blue-gray */
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(234, 214, 162, 0.35); /* softer color for better dynamic look */
+  backdrop-filter: blur(8px); /* modern blur effect */
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+/* Side Panel */
+/* Slide-in Side Panel */
+/* Base side-panel settings */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;               /* Fixed width on desktop */
+  max-width: 90vw;            /* Still caps at 90% of screen */
+  height: 100%;
+  background: #100011;
+  color: white;
   padding: 2rem;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.4);
+  z-index: 101;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Panel visible */
+.side-panel.open {
+  transform: translateX(0);
+}
+
+/* Make panel smaller on small screens */
+@media screen and (max-width: 600px) {
+  .side-panel {
+    width: 85vw;             /* smaller than 100vw */
+    padding: 1.25rem;
+  }
+
+  .side-panel-title {
+    font-size: 1.4rem;
+    left: 1rem;
+  }
+}
+
+.side-panel h2 {
+  color: #facc15;
+  background: #3a1e00;
+}
+
+.sidepanelP {
+  color: #ead6a2;
+}
+
+/* Side Panel Image Wrapper */
+.side-panel-image-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 3rem;
+  overflow: visible;
+}
+
+/* Game Image with diagonal cut */
+.sidepanelImage {
+  width: 100%;
+  height: 460px; /* increased height */
+  min-height: 320px;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  display: block;
+}
+
+/* Overlapping Title */
+.side-panel-title {
+  position: absolute;
+  bottom: -1.5rem; /* pull it down slightly */
+  left: 1.5rem;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  font-size: 1.8rem;
+  color: #facc15;
+  border-radius: 8px;
+  z-index: 2;
+}
+
+.close-button {
+  background: white;         /* White background for visibility */
+  color: black;              /* Black icon/text for contrast */
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;             /* Ensures it's on top of everything */
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow */
+  transition: background 0.3s, color 0.3s;
+}
+
+.close-button:hover {
+  background: #facc15;       /* Yellow hover */
+  color: #000;               /* Keep contrast */
+}
+
+/* Store Buttons */
+.socialButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.instaBtn,
+.twitBtn {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  transition: background 0.3s;
+}
+
+.instaBtn {
+  background-color: #1b2838;
+}
+
+.twitBtn {
+  background-color: #313131;
+}
+
+.instaBtn:hover {
+  background-color: #2a475e;
+}
+
+.twitBtn:hover {
+  background-color: #444;
+}
+
+.currentProjectWrapper {
+  width: 100%;
+  background-color: #ead6a2;
+  padding: 4rem 1rem;
+}
+
+.currentProject {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  color: #100011;
+}
+
+.project-overview {
+  font-size: 1.1rem;
+  margin: 1rem auto 2rem;
+  line-height: 1.6;
+  max-width: 700px;
+  color: #3a1e00; /* darker text for contrast on pale background */
+}
+
+.project-image {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.trailer-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.trailer-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

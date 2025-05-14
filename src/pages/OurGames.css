@@ -1,5 +1,16 @@
+/* General Styles */
+body {
+  background-color: #ead6a2; /* dark slate blue background */
+  color: #e2e8f0; /* light gray text */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .title-text {
   margin-bottom: 0.5rem; /* Adds space below "Our Games" heading */
+  color: #facc15; /* yellow */
+  font-size: 2rem; /* Slightly larger for emphasis */
 }
 
 .page-content {
@@ -8,14 +19,16 @@
   z-index: 1;
 }
 
-.page-content.shifted {
-  transform: translateX(-100px); /* slight push */
+/* Game Box */
+.game-box {
+  flex: 1 1 300px; /* Grow/shrink with min width */
+  max-width: 400px;
+  max-height: 500px;
 }
 
 .game-box {
   cursor: pointer;
-  background-color: #0f172a; /* deep slate blue */
-  border: 2px solid #38bdf8; /* sky blue border */
+  background-color: #100011; 
   border-radius: 12px;
   padding: 1.5rem;
   max-width: 400px;
@@ -28,6 +41,11 @@
 .game-box:hover {
   transform: scale(1.02);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.game-box p {
+  background-color: #100011;
+  color: #eac76b;
 }
 
 .game-image {
@@ -54,21 +72,23 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.8); /* dark blur effect */
+  width: 100vw;
+  height: 100vh;
+  background: rgba(234, 214, 162, 0.35); /* softer color for better dynamic look */
+  backdrop-filter: blur(8px); /* modern blur effect */
+  -webkit-backdrop-filter: blur(8px);
   z-index: 100;
 }
 
 /* Side Panel */
-/* Slide-in Side Panel */
 .side-panel {
   position: fixed;
   top: 0;
   right: 0;
-  width: 500px;
+  width: 400px;
+  max-width: 90vw;
   height: 100%;
-  background: #0f172a;
+  background: #100011; /* dark background for contrast */
   color: white;
   padding: 2rem;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.4);
@@ -77,16 +97,36 @@
   transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  overflow-y: auto;
 }
 
+/* Panel visible */
 .side-panel.open {
   transform: translateX(0);
 }
 
+/* Make panel smaller on small screens */
+@media screen and (max-width: 600px) {
+  .side-panel {
+    width: 85vw;
+    padding: 1.25rem;
+  }
+
+  .side-panel-title {
+    font-size: 1.4rem;
+    left: 1rem;
+  }
+}
+
 .side-panel h2 {
   color: #facc15;
+  background: #3a1e00;
 }
+
+.sidepanelP {
+  color: #ead6a2;
+}
+
 
 /* Side Panel Image Wrapper */
 .side-panel-image-wrapper {
@@ -99,7 +139,8 @@
 /* Game Image with diagonal cut */
 .side-panel-image {
   width: 100%;
-  height: 360px;
+  height: 460px; /* increased height */
+  min-height: 320px;
   object-fit: cover;
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   display: block;
@@ -108,7 +149,7 @@
 /* Overlapping Title */
 .side-panel-title {
   position: absolute;
-  bottom: -1.5rem; /* pull it down slightly */
+  bottom: -1.5rem;
   left: 1.5rem;
   margin: 0;
   padding: 0.5rem 1rem;
@@ -116,18 +157,32 @@
   color: #facc15;
   border-radius: 8px;
   z-index: 2;
-  background-color: #006eff62;
 }
 
 .close-button {
-  background: none;
+  background: #facc15; /* yellow */
+  color: #100011;      /* dark background for contrast */
   border: none;
-  font-size: 2rem;
-  color: white;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
   position: absolute;
   top: 1rem;
   right: 1rem;
+  z-index: 9999;
   cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow */
+  transition: background 0.3s, color 0.3s;
+}
+
+.close-button:hover {
+  background: #000;   /* Dark hover background */
+  color: #facc15;      /* yellow text on hover */
 }
 
 /* Store Buttons */
@@ -150,17 +205,17 @@
 }
 
 .steam-btn {
-  background-color: #1b2838;
+  background-color: #1b2838; /* Steam button with deep blue */
 }
 
 .epic-btn {
-  background-color: #313131;
+  background-color: #313131; /* Epic button with dark gray */
 }
 
 .steam-btn:hover {
-  background-color: #2a475e;
+  background-color: #2a475e; /* Hover effect for steam button */
 }
 
 .epic-btn:hover {
-  background-color: #444;
+  background-color: #444;   /* Hover effect for epic button */
 }

@@ -6,10 +6,14 @@ import OurGames from './pages/OurGames';
 import FontsPage from './pages/FontsPage';
 import ContactUs from './pages/ContactUs';
 import './App.css';
+import { useLocation } from 'react-router-dom';
 
 function App() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   return (
-    <div className="app-container">
+    <div className={`app-container ${isHome ? 'home' : ''}`}>
       <Navbar />
       <div className="main-content">
         <Routes>

@@ -1,4 +1,5 @@
 import Title from '../components/Title';
+import './FontsPage.css'
 
 const FontsPage = () => {
   return (

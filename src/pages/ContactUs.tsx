@@ -1,4 +1,5 @@
 import Title from '../components/Title';
+import './ContactUs.css'
 
 const Home = () => (
   <div className="page-content">

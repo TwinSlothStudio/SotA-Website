@@ -1,4 +1,5 @@
 import Title from '../components/Title';
+import './AboutUs.css'
 
 const AboutUs = () => (
   <div className="page-content">

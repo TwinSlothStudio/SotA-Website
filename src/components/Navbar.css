@@ -4,10 +4,16 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: #1e293b;
+  background-color: #35260069; /* Default color */
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* When navbar is open, change background color */
+.navbar.open {
+  background-color: #352600; /* Change to your desired color when open */
 }
 
 /* Logo */
@@ -27,7 +33,7 @@
 }
 
 .nav-links a {
-  color: #38bdf8;
+  color: #eac76b;
   text-decoration: none;
   font-weight: bold;
   padding: 0.5rem 1rem;
@@ -35,7 +41,7 @@
 }
 
 .nav-links a:hover {
-  color: #ffcc00;
+  color: #d0314f;
 }
 
 /* Hamburger icon - hidden on desktop */
@@ -50,14 +56,14 @@
 .hamburger .bar {
   width: 25px;
   height: 3px;
-  background-color: white;
+  background-color: #ae3129;
   transition: all 0.3s ease;
 }
 
 /* Hamburger transforms into X */
 .hamburger.open .bar:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
-  background-color: #ffcc00;
+  background-color: #ae3129;
 }
 
 .hamburger.open .bar:nth-child(2) {
@@ -66,7 +72,7 @@
 
 .hamburger.open .bar:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
-  background-color: #ffcc00;
+  background-color: #ae3129;
 }
 
 /* Responsive styles */
@@ -77,12 +83,12 @@
 
   .nav-links {
     position: absolute;
-    top: 70px;
+    top: 77px;
     left: 0;
     right: 0;
     flex-direction: column;
     align-items: center;
-    background-color: #1e293b;
+    background-color: #352600;
     transform: translateY(-200%);
     transition: transform 0.3s ease;
     z-index: 999;

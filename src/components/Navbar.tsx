@@ -7,10 +7,10 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
       <div className="nav-logo">
         <Link to="/">
-        <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo" />
         </Link>
       </div>
 

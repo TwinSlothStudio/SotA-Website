@@ -1,3 +1,15 @@
+.page-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 2rem;
+  height: 100vh;
+}
+
+
 /* Define font families in CSS */
 .celtic-garamond {
   font-family: 'Celtic Garamond the 2nd';
