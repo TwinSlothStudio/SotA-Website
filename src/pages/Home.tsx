@@ -1,9 +1,6 @@
 import Title from '../components/Title';
 import './Home.css';
 import { useEffect, useRef, useState } from 'react';
-import studio1 from '../assets/studioImages/studio1.jpg';
-import studio2 from '../assets/studioImages/studio2.jpg';
-import studio3 from '../assets/studioImages/studio3.jpg';
 import personImageAlex from '../assets/peopleImages/alex.jpg';
 import personImageAlex1 from '../assets/peopleImages/alex1bg.jpg';
 import personImageAlex2 from '../assets/peopleImages/alex2bg.jpg';
@@ -16,7 +13,7 @@ import personImageEgorAlexA1 from '../assets/peopleImages/abg.jpg';
 
 const Home = () => {
   const titleRef = useRef<HTMLDivElement>(null);
-  const images = [studio1, studio2, studio3, personImageAlex1, personImageAlex2, personImageAlex3, personImageEgor1, personImageEgorAlex, personImageEgorAlexA1, personImageEgorAlexE1];
+  const images = [personImageAlex1, personImageAlex2, personImageAlex3, personImageEgor1, personImageEgorAlex, personImageEgorAlexA1, personImageEgorAlexE1];
   const [currentImage, setCurrentImage] = useState(0);
   const [panelOpen, setPanelOpen] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState<null | 'alex' | 'egor'>(null);
@@ -52,7 +49,7 @@ const Home = () => {
     // Set interval to cycle through the background images every 5 seconds
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 1800000); // Change every 5000ms (5 seconds)
+    }, 900000); 
 
     // Clean up the interval on component unmount
     return () => clearInterval(interval);
@@ -164,13 +161,16 @@ const Home = () => {
             <h1 className="title-text">Our Team</h1>
             <p>We consist of just two personell, two friends from high school who are both passionate about games and computers. What better way to indulge in this passion than to create our own studio?</p>
           </div>
-          <div className="fade-content">
-            <div className="personBox-container">
+          
+          <div className="personBox-container">
+            <div className="fade-content">
               <div className="personBox" onClick={() => handleBoxClick('alex')}>
                 <img src={personImageAlex} alt="Co-founder Alex" className="personImage" />
                 <h2 className="personTitle">Alexander</h2>
                 <p className="personSubtitle"><em>Co-Founder | Lead Programmer</em></p>
               </div>
+            </div>
+            <div className="fade-content">
               <div className="personBox" onClick={() => handleBoxClick('egor')}>
                 <img src={personImageEgor} alt="Co-founder Egor" className="personImage" />
                 <h2 className="personTitle">Egor</h2>
@@ -212,17 +212,12 @@ const Home = () => {
             </div>
           </>
         )}
-        <div className="currentProjectWrapper fade-content">
-          <div className="currentProject">
-            <h1 className="title-text">Current Project</h1>
+        <div className="current-projectWrapper fade-content">
+          <div className="current-project">
+            <h1 className="current-projectTitle">Current Project</h1>
             <p className="project-overview">
               <strong>Shadow of the Ascendant</strong> is an open world roguelike with realistic textures, challenging gameplay, and plenty of exploration potential. Get lost in a dynamic world where every run feels fresh.
             </p>
-
-            {/* --- Option 1: Image Preview --- */}
-            {/* <img src={require('../assets/gameImages/shadow.png')} alt="Shadow of the Ascendant" className="project-image" /> */}
-
-            {/* --- Option 2: YouTube Trailer Embed --- */}
             <div className="trailer-wrapper">
               <iframe
                 width="560"

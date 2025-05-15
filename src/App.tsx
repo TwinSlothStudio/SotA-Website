@@ -5,6 +5,7 @@ import AboutUs from './pages/AboutUs';
 import OurGames from './pages/OurGames';
 import FontsPage from './pages/FontsPage';
 import ContactUs from './pages/ContactUs';
+import Sota from './pages/sota';
 import './App.css';
 import { useLocation } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/games" element={<OurGames />} />
           <Route path="/fonts" element={<FontsPage />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/sota" element={<Sota />} />
         </Routes>
       </div>
     </div>
