@@ -18,8 +18,8 @@ const OurGames = () => {
             <h2 className="game-title">Shadow of the Ascendant</h2>
             <p className="game-subtitle"><em>Coming not so Soon</em></p>
             <div className="store-buttons">
-              <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" className="steam-btn">Steam</a>
-              <a href="https://www.epicgames.com" target="_blank" rel="noopener noreferrer" className="epic-btn">Epic Games</a>
+              <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" className="steam-btn" onClick={(e) => e.stopPropagation()}>Steam</a>
+              <a href="https://www.epicgames.com" target="_blank" rel="noopener noreferrer" className="epic-btn" onClick={(e) => e.stopPropagation()}>Epic Games</a>
             </div>
           </div>
         </div>

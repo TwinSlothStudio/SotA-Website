@@ -15,6 +15,7 @@
   background-repeat: no-repeat;
   transition: background-image 1s ease-in-out, opacity 1s ease-in-out; /* Add fade effect */
   opacity: 1; /* Ensures the background starts fully visible */
+  transform: scale(1.2);
 }
 
 /* Scale the image differently on mobile */
@@ -86,7 +87,7 @@ html, body {
 
 /* Content area will scroll over the title */
 .content-section {
-  background-color: #ead6a2;
+  background-color: #f8eec1;
   width: 100vw;
   min-height: 10vh;
   padding-top: 8rem;
@@ -109,7 +110,7 @@ html, body {
 
 .briefAbout {
   width: 100vw;
-  background-color: #ead6a2;
+  background-color: #f8eec1;
   padding: 4rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -141,11 +142,11 @@ html, body {
 }
 
 .teamPhotos {
-  background-color: #ead6a2;
+  background-color: #f8eec1;
 }
 
 .title-text {
-  margin-bottom: 0.5rem; /* Adds space below "Our Games" heading */
+  margin-bottom: 0.5rem;
 }
 
 .briefAbout {
@@ -357,7 +358,7 @@ html, body {
 
 .current-projectWrapper {
   width: 100vw;
-  background-color: #ead6a2;
+  background-color: #f8eec1;
   padding: 4rem 1rem;
 }
 
@@ -368,7 +369,7 @@ html, body {
   color: #100011;
 }
 
-.current-projectTitle {
+.subTitle {
     font-family: 'Celtic Garamond the 2nd';
     color: #ebb21f;
     font-size: 3rem;

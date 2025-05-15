@@ -155,10 +155,10 @@ const Home = () => {
             <p>We make games... and this website... I think</p>
           </div>
         </div>
-        
+        <div style= {{height:'50px', background:'#f8eec1'}}></div>
         <div className={`briefAbout ${panelOpen ? 'shifted' : ''}`}>
           <div className="fade-content">
-            <h1 className="title-text">Our Team</h1>
+            <h1 className="subTitle">Our Team</h1>
             <p>We consist of just two personell, two friends from high school who are both passionate about games and computers. What better way to indulge in this passion than to create our own studio?</p>
           </div>
           
@@ -214,7 +214,7 @@ const Home = () => {
         )}
         <div className="current-projectWrapper fade-content">
           <div className="current-project">
-            <h1 className="current-projectTitle">Current Project</h1>
+            <h1 className="subTitle">Current Project</h1>
             <p className="project-overview">
               <strong>Shadow of the Ascendant</strong> is an open world roguelike with realistic textures, challenging gameplay, and plenty of exploration potential. Get lost in a dynamic world where every run feels fresh.
             </p>

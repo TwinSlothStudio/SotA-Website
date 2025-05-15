@@ -90,6 +90,7 @@ const Sota = () => {
                         <p className='fadeContent'>Still in Progress</p>
                     </div>
                 </div>
+                <div style= {{height:'50px', background:'#f8eec1'}}></div>
                 <div className="sectionFullWidth">
                     <div className="currentProjectWrapper">
                         <div className="currentProject">
